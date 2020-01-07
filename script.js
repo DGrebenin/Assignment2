@@ -3,6 +3,7 @@ let usernameIn = document.getElementById("usernameIn");
 let time = 0;
 
 function postData() {
+    console.log("yeet");
     $.post( "../submit/index.php", { time: time } );
 }
 
