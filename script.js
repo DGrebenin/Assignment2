@@ -4,7 +4,7 @@ let time = 0;
 
 function postData() {
     console.log("yeet");
-    $.post( "../submit/index.php", { time: time } );
+    $.post( "./submit/index.php", { time: time } );
 }
 
 passIn.addEventListener("focusin", function () {
