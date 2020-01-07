@@ -3,7 +3,10 @@ let usernameIn = document.getElementById("usernameIn");
 let time = 0;
 
 function postData() {
-    $.post( "../submit/index.php", { time: time } );
+    const Http = new XMLHttpRequest();
+    Http.open("POST", "./submit/index.php");
+    Http.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    Http.send("time=" + time);
 }
 
 passIn.addEventListener("focusin", function () {
