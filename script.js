@@ -2,6 +2,10 @@ let passIn = document.getElementById("passIn");
 let usernameIn = document.getElementById("usernameIn");
 let time = 0;
 
+function postData() {
+    $.post( "../submit/index.php", { time: time } );
+}
+
 passIn.addEventListener("focusin", function () {
     document.getElementById("passPopover").classList.remove("off");
 });
