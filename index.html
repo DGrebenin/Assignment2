@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Experiment</title>
+        <style>
+            * {
+                box-sizing: border-box;
+                font-family: sans-serif;
+            }
+
+            html {
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                margin: 0;
+                padding: 0;
+            }
+
+            @media screen and (max-width: 576px){
+                #warning {
+                    width: 90%;
+                    height: 85%;
+                    top: 7.5%;
+                    left: 5%;
+                }
+            }
+
+            @media screen and (min-width: 576px){
+                #warning {
+                    width: 70%;
+                    height: 85%;
+                    top: 7.5%;
+                    left: 15%;
+                }
+            }
+
+            @media screen and (min-width: 1200px){
+                #warning {
+                    width: 50%;
+                    height: 70%;
+                    top: 15%;
+                    left: 25%;
+                }
+            }
+
+            #warning {
+                border: 1px solid #b6b6b6;
+                border-radius: .30rem;
+                background: rgb(217, 217, 217);
+                overflow: auto;
+                position: absolute;
+                color: #181818;
+                padding: 30px 20px 10px 20px;
+            }
+
+            .alert {
+                border-radius: .25rem;
+                background-color: #f8d7da;
+                border: 1px solid #f5c6cb;
+                color: #721c24;
+                padding: 10px;
+                margin: 10px;
+                float: right;
+                transition: transform .2s ease-in, background-color .15s;
+                cursor: pointer;
+            }
+
+            .alert:hover {
+                background-color: #e6c6c8;
+            }
+
+            .on {
+                display: inline-block;
+            }
+
+            .off {
+                transform: translateY(4rem);
+            }
+        </style>
+    </head>
+    <body>
+    <main>
+        <div id="warning">
+            <div style="height: 90%">
+                <h2 style="text-align: center; margin: 0 10px 20px 10px">Please read before proceeding!</h2>
+                <p>In the duration of the following experiment you will be asked for personal data.
+                    This data will not be saved.</p>
+                <p>The information on the data collected from you will be presented during the
+                    debriefing.</p>
+                <p>You will be able to request a removal of this data if you choose so at the end
+                    of the experiment.</p>
+                <p>The data will not be given out to third parties.</p>
+                <p>The data will be saved completely anonymously with only the participant ID as a
+                    means of organisation.</p>
+                <p>Please answer all of the questions truthfully
+                    and trying not to take notice of the fact that this is an experiment.</p>
+            </div>
+            <div style="height: 10%">
+                <div style="height: 50%">
+                    <div style="margin: 0 auto 0 auto; width: max-content">
+                        <label style="font-weight: bold" for="consent">I agree to the aforementioned rules</label>
+                        <input id="consent" type="checkbox">
+                    </div>
+                </div>
+                <div style="height: 50%">
+                    <button onclick="startExperiment()" style="margin: 0 auto 0 auto; display: block">Start the experiment</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer style="position: fixed; bottom: 0; width: 100%">
+        <div class="alert off" id="fail-consent-alert">
+            Please accept the rules to continue!
+        </div>
+    </footer>
+    <script>
+        function toggleAlert(opt_set) {
+            let alert = document.getElementById("fail-consent-alert");
+                if (alert.classList.contains("on")) {
+                    if (opt_set !== true) {
+                        alert.classList.remove("on");
+                        alert.classList.add("off");
+                    }
+                } else if (alert.classList.contains("off")) {
+                    if (opt_set !== false) {
+                        alert.classList.remove("off");
+                        alert.classList.add("on");
+                    }
+                } else {
+                    if (opt_set === true) {
+                        alert.classList.add("on");
+                    } else {
+                        alert.classList.add("off");
+                    }
+                }
+        }
+        function startExperiment() {
+            if (document.getElementById("consent").checked) {
+                location.assign("./exp");
+            } else {
+                toggleAlert(true);
+            }
+        }
+
+        for (let alert of document.getElementsByClassName("alert")) {
+            alert.addEventListener("click", function () {
+                toggleAlert(false);
+            });
+        }
+    </script>
+    </body>
+</html>

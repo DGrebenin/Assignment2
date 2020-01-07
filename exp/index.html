@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Experiment</title>
+        <style>
+            .button {
+                border-radius: .25rem;
+                border: 1px solid #007bff;
+                padding: 10px;
+                color: rgb(255, 255, 255);
+                background-color: #007bff;
+                cursor: pointer;
+                transition: background-color .1s ease-in;
+            }
+
+            .button:hover {
+                background-color: #0069d9;
+            }
+
+            #form {
+                padding: 10px;
+                border: .2rem solid #e8e9ea;
+            }
+
+            .popover {
+                position: absolute;
+                transition: all .1s ease-in;
+                top: 0;
+                left: 112%;
+                opacity: 1;
+            }
+
+            .arrow {
+                border-top: 1px solid rgb(182, 182, 182);
+                border-left: 1px solid rgb(182, 182, 182);
+                transform: rotate(-45deg);
+                height: .4375rem;
+                width: .4375rem;
+                position: absolute;
+                top: .625rem;
+                left: -.21875rem;
+                background: rgb(217, 217, 217);
+            }
+
+            .pop-container {
+                border-radius: .4rem;
+                border: 1px solid #b6b6b6;
+                width: 9rem;
+            }
+
+            .pop-title {
+                border-top-left-radius: .4rem;
+                border-top-right-radius: .4rem;
+                background: rgb(217, 217, 217);
+                padding: .4375rem;
+                border-bottom: 1px solid rgb(206, 206, 206);
+                font-size: .875rem;
+            }
+
+            .pop-text {
+                padding: .625rem;
+                font-size: .875rem;
+            }
+
+            .off {
+                visibility: hidden;
+                transform: translateX(-20px);
+                opacity: 0;
+            }
+
+            input {
+                margin-bottom: 10px;
+            }
+
+            * {
+                font-family: sans-serif;
+            }
+
+            ul {
+                margin: 0;
+                padding-left: 15px;
+            }
+
+            @media screen and (min-width: 576px) {
+                form {
+                    margin: auto;
+                }
+
+                .pop-container {
+                    width: 15rem;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <form target="_self" action="../submit" id="form" style="width: min-content">
+            <label for="usernameIn">Username</label>
+            <div id="usernameContainer" style="position: relative">
+                <input id="usernameIn" type="text">
+                <div id="userPopover" class="popover off">
+                    <div class="arrow"></div>
+                    <div class="pop-container">
+                        <div class="pop-title">Username requirements</div>
+                        <div class="pop-text">
+                            <ul>
+                                <li>Longer than 4 characters</li>
+                                <li>Consists of alphanumeric characters, underscore and dash</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <label for="emailIn">Email</label>
+            <input id="emailIn" placeholder="name@example.com" type="email">
+            <label for="passIn">Password</label>
+            <div id="passContainer" style="position: relative">
+                <input id="passIn" type="password">
+                <div id="passPopover" class="popover off">
+                    <div class="arrow"></div>
+                    <div class="pop-container">
+                        <div class="pop-title">Password requirements</div>
+                        <div class="pop-text">
+                            <ul>
+                                <li>Longer than 6 characters</li>
+                                <li>Has at least one lowercase letter, one uppercase letter and a number</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <label for="passCheck">Password confirmation</label>
+            <input id="passCheck" type="password">
+            <input class="button" style="margin: 7px auto; display: block" type="submit" value="Submit">
+        </form>
+        <script src="../script.js" type="application/javascript"></script>
+    </body>
+</html>
