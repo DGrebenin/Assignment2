@@ -4,7 +4,10 @@ let timeElapsed = 0;
 
 function postData() {
     console.log("yeet");
-    $.post( "../submit/index.php", { time: timeElapsed } );
+    let jqxhr = $.post( "../submit/index.php", { time: timeElapsed } );
+    jqxhr.fail(function () {
+        alert("error bitch");
+    })
 }
 
 passIn.addEventListener("focusin", function () {
