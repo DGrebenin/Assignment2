@@ -98,7 +98,7 @@
         <form target="_self" action="../submit" id="form" style="width: min-content">
             <label for="usernameIn">Username</label>
             <div id="usernameContainer" style="position: relative">
-                <input id="usernameIn" type="text">
+                <input required id="usernameIn" type="text">
                 <div id="userPopover" class="popover off">
                     <div class="arrow"></div>
                     <div class="pop-container">
@@ -113,10 +113,10 @@
                 </div>
             </div>
             <label for="emailIn">Email</label>
-            <input id="emailIn" placeholder="name@example.com" type="email">
+            <input required id="emailIn" placeholder="name@example.com" type="email">
             <label for="passIn">Password</label>
             <div id="passContainer" style="position: relative">
-                <input id="passIn" type="password">
+                <input required id="passIn" type="password">
                 <div id="passPopover" class="popover off">
                     <div class="arrow"></div>
                     <div class="pop-container">
@@ -131,7 +131,7 @@
                 </div>
             </div>
             <label for="passCheck">Password confirmation</label>
-            <input id="passCheck" type="password">
+            <input required id="passCheck" type="password">
             <input class="button" style="margin: 7px auto; display: block" type="submit" value="Submit">
         </form>
         <script src="../script.js" type="application/javascript"></script>
