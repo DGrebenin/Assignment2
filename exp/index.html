@@ -95,7 +95,7 @@
         <link href="../favicon.ico" rel="icon" type="image/ico" />
     </head>
     <body>
-        <form onsubmit="postData()" id="form" style="width: min-content">
+        <form id="form" style="width: min-content">
             <label for="usernameIn">Username</label>
             <div id="usernameContainer" style="position: relative">
                 <input required id="usernameIn" type="text">
@@ -132,7 +132,7 @@
             </div>
             <label for="passCheck">Password confirmation</label>
             <input required id="passCheck" type="password">
-            <input class="button" style="margin: 7px auto; display: block" type="submit" value="Submit">
+            <input onclick="postData()" class="button" style="margin: 7px auto; display: block" type="button" value="Submit">
         </form>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="../script.js" type="application/javascript"></script>
