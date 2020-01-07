@@ -6,7 +6,7 @@
         <link href="../favicon.ico" rel="icon" type="image/ico" />
     </head>
     <body>
-        <?php echo $_POST("time"); ?>
+        <?php echo $_POST["time"]; ?>
     </body>
 </html>
 
