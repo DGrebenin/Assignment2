@@ -7,7 +7,10 @@ function postData() {
     let jqxhr = $.post( "../submit/index.php", { time: timeElapsed } );
     jqxhr.fail(function () {
         alert("error bitch");
-    })
+    });
+    jqxhr.done(function () {
+        alert("no error bitch");
+    });
 }
 
 passIn.addEventListener("focusin", function () {
