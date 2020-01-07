@@ -95,10 +95,10 @@
         <link href="../favicon.ico" rel="icon" type="image/ico" />
     </head>
     <body>
-        <form target="_self" action="../submit" id="form" style="width: min-content">
+        <form target="_self" action="../submit" method="post" id="form" style="width: min-content">
             <label for="usernameIn">Username</label>
             <div id="usernameContainer" style="position: relative">
-                <input required id="usernameIn" type="text">
+                <input required name="username" id="usernameIn" type="text">
                 <div id="userPopover" class="popover off">
                     <div class="arrow"></div>
                     <div class="pop-container">
@@ -113,10 +113,10 @@
                 </div>
             </div>
             <label for="emailIn">Email</label>
-            <input required id="emailIn" placeholder="name@example.com" type="email">
+            <input required name="email" id="emailIn" placeholder="name@example.com" type="email">
             <label for="passIn">Password</label>
             <div id="passContainer" style="position: relative">
-                <input required id="passIn" type="password">
+                <input name="pass" required id="passIn" type="password">
                 <div id="passPopover" class="popover off">
                     <div class="arrow"></div>
                     <div class="pop-container">
