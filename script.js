@@ -1,12 +1,9 @@
 let passIn = document.getElementById("passIn");
 let usernameIn = document.getElementById("usernameIn");
-let timeElapsed = 0;
+let time = 0;
 
 function postData() {
-    fetch("./submit/index.php", {
-        method: "POST",
-        body: JSON.stringify({time: timeElapsed})
-    }).then(r  => console.log(r));
+    $.post( "../submit/index.php", { time: time } );
 }
 
 passIn.addEventListener("focusin", function () {
@@ -25,4 +22,4 @@ usernameIn.addEventListener("focusout", function () {
     document.getElementById("userPopover").classList.add("off");
 });
 
-setInterval(function () {timeElapsed++;}, 1);
+setInterval(function () {time++;}, 1);
