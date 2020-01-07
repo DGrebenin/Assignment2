@@ -1,12 +1,12 @@
 let passIn = document.getElementById("passIn");
 let usernameIn = document.getElementById("usernameIn");
-let time = 0;
+let timeElapsed = 0;
 
 function postData() {
-    const Http = new XMLHttpRequest();
-    Http.open("POST", "./submit/index.php");
-    Http.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    Http.send("time=" + time);
+    fetch("./submit/index.php", {
+        method: "POST",
+        body: JSON.stringify({time: timeElapsed})
+    }).then(r  => console.log(r));
 }
 
 passIn.addEventListener("focusin", function () {
@@ -25,4 +25,4 @@ usernameIn.addEventListener("focusout", function () {
     document.getElementById("userPopover").classList.add("off");
 });
 
-setInterval(function () {time++;}, 1);
+setInterval(function () {timeElapsed++;}, 1);
