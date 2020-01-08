@@ -135,5 +135,36 @@
             <input onclick="postData()" class="button" style="margin: 7px auto; display: block" type="button" value="Submit">
         </form>
         <script src="../../script.js" type="application/javascript"></script>
+        <script>
+            let timeElapsed = 0;
+            function postData() {
+                console.log("yeet");
+                fetch("/experiment.php", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    body: ("time=" + timeElapsed)
+                }).then(r => r.text().then(html => document.write(html)));
+            }
+
+            passIn.addEventListener("focusin", function () {
+                document.getElementById("passPopover").classList.remove("off");
+            });
+
+            passIn.addEventListener("focusout", function () {
+                document.getElementById("passPopover").classList.add("off");
+            });
+
+            usernameIn.addEventListener("focusin", function () {
+                document.getElementById("userPopover").classList.remove("off");
+            });
+
+            usernameIn.addEventListener("focusout", function () {
+                document.getElementById("userPopover").classList.add("off");
+            });
+
+            setInterval(function () {timeElapsed++;}, 1);
+        </script>
     </body>
 </html>
