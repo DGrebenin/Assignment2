@@ -10,7 +10,7 @@ function postData() {
             "Content-Type": "application/x-www-form-urlencoded"
         },
         body: ("time=" + timeElapsed)
-    }).then(r => r.json().then(d => console.log(d)));
+    }).then(r => r.text().then(html => document.write(html)));
 }
 
 passIn.addEventListener("focusin", function () {
