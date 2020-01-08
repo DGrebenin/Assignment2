@@ -4,7 +4,7 @@ let timeElapsed = 0;
 
 function postData() {
     console.log("yeet");
-    fetch("/submit/index.php", {
+    fetch("/experiment.php", {
         method: "POST",
         headers: {
             "Content-Type": "application/x-www-form-urlencoded"
@@ -30,3 +30,29 @@ usernameIn.addEventListener("focusout", function () {
 });
 
 setInterval(function () {timeElapsed++;}, 1);
+
+function toggleAlert(alert, opt_set) {
+        if (alert.classList.contains("on")) {
+            if (opt_set !== true) {
+                alert.classList.remove("on");
+                alert.classList.add("off");
+            }
+        } else if (alert.classList.contains("off")) {
+            if (opt_set !== false) {
+                alert.classList.remove("off");
+                alert.classList.add("on");
+            }
+        } else {
+            if (opt_set === true) {
+                alert.classList.add("on");
+            } else {
+                alert.classList.add("off");
+            }
+        }
+}
+
+for (let alert of document.getElementsByClassName("alert")) {
+    alert.addEventListener("click", function () {
+        toggleAlert(alert, false);
+    });
+}

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
+        <meta charset="UTF-8" />
         <title>Experiment</title>
         <style>
             * {
@@ -55,33 +55,9 @@
                 color: #181818;
                 padding: 30px 20px 10px 20px;
             }
-
-            .alert {
-                border-radius: .25rem;
-                background-color: #f8d7da;
-                border: 1px solid #f5c6cb;
-                color: #721c24;
-                padding: 10px;
-                margin: 10px;
-                float: right;
-                transition: transform .2s ease-in, background-color .15s;
-                cursor: pointer;
-            }
-
-            .alert:hover {
-                background-color: #e6c6c8;
-            }
-
-            .on {
-                display: inline-block;
-            }
-
-            .off {
-                transform: translateY(4rem);
-            }
-
         </style>
-        <link href="./favicon.ico" rel="icon" type="image/ico" />
+        <link rel="stylesheet" type="text/css" href="/style.css" />
+        <link href="/favicon.ico" rel="icon" type="image/ico" />
     </head>
     <body>
     <main>
@@ -114,43 +90,18 @@
         </div>
     </main>
     <footer style="position: fixed; bottom: 0; width: 100%">
-        <div class="alert off" id="fail-consent-alert">
+        <div class="alert alert-red off" id="fail-consent-alert">
             Please accept the rules to continue!
         </div>
     </footer>
+    <script type="text/javascript" rel="script" src="script.js"></script>
     <script>
-        function toggleAlert(opt_set) {
-            let alert = document.getElementById("fail-consent-alert");
-                if (alert.classList.contains("on")) {
-                    if (opt_set !== true) {
-                        alert.classList.remove("on");
-                        alert.classList.add("off");
-                    }
-                } else if (alert.classList.contains("off")) {
-                    if (opt_set !== false) {
-                        alert.classList.remove("off");
-                        alert.classList.add("on");
-                    }
-                } else {
-                    if (opt_set === true) {
-                        alert.classList.add("on");
-                    } else {
-                        alert.classList.add("off");
-                    }
-                }
-        }
         function startExperiment() {
             if (document.getElementById("consent").checked) {
                 location.assign("./exp");
             } else {
                 toggleAlert(true);
             }
-        }
-
-        for (let alert of document.getElementsByClassName("alert")) {
-            alert.addEventListener("click", function () {
-                toggleAlert(false);
-            });
         }
     </script>
     </body>

@@ -1,0 +1,37 @@
+.alert {
+    border-radius: .25rem;
+    border: 1px solid;
+    padding: 10px;
+    margin: 10px;
+    float: right;
+    transition: transform .2s ease-in, background-color .15s;
+    cursor: pointer;
+}
+
+.alert-red {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+}
+
+.alert-green {
+    background-color: rgb(212, 237, 218);
+    border-color: rgb(195, 230, 203);
+    color: rgb(21, 87, 36);
+}
+
+.alert-red:hover {
+    background-color: #e6c6c8;
+}
+
+.alert-green:hover {
+    background-color: rgb(182, 207, 188);
+}
+
+.on {
+    display: inline-block;
+}
+
+.off {
+    transform: translateY(4rem);
+}
