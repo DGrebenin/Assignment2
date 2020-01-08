@@ -4,7 +4,11 @@ let timeElapsed = 0;
 
 function postData() {
     console.log("yeet");
-    fetch("/sub")
+    fetch("/submit/index.php", {
+        method: "POST",
+        headers: "application/x-www-form-urlencoded",
+        body: ("time=" + timeElapsed)
+    }).then(r => r.text().then(data => console.log(data)));
 }
 
 passIn.addEventListener("focusin", function () {
