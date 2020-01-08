@@ -1,6 +1,3 @@
-let passIn = document.getElementById("passIn");
-let usernameIn = document.getElementById("usernameIn");
-
 function toggleAlert(alert, opt_set) {
         if (alert.classList.contains("on")) {
             if (opt_set !== true) {
