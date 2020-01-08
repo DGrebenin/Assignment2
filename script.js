@@ -4,13 +4,7 @@ let timeElapsed = 0;
 
 function postData() {
     console.log("yeet");
-    let jqxhr = $.post( "../submit/index.php", { time: timeElapsed } );
-    jqxhr.fail(function () {
-        alert("error bitch");
-    });
-    jqxhr.done(function () {
-        alert("no error bitch");
-    });
+    fetch("/sub")
 }
 
 passIn.addEventListener("focusin", function () {
