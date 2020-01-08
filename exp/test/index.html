@@ -319,11 +319,6 @@
             let secondExp = false;
             let timer;
             function contExperiment() {
-                for (let element of document.getElementsByClassName("button")) {
-                    if (!(window.getComputedStyle(element).display === "none")) {
-                        element.disabled = true;
-                    }
-                }
                 if (passwordValid && usernameValid && emailValid && passCheckValid) {
                     if (secondExp === true) {
                         clearInterval(timer);
