@@ -2,8 +2,17 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Experiment</title>
         <style>
+            h1 {
+                margin: 30px
+            }
+
+            p {
+                font-size: small;
+            }
+
             .button {
                 border-radius: .25rem;
                 border: 1px solid #007bff;
@@ -18,9 +27,10 @@
                 background-color: #0069d9;
             }
 
-            #form {
+            .form {
                 padding: 10px;
                 border: .2rem solid #e8e9ea;
+                width: min-content
             }
 
             .popover {
@@ -63,6 +73,27 @@
                 font-size: .875rem;
             }
 
+            .pop-text>div>img {
+                width: .8rem;
+                height: .8rem;
+            }
+
+            .pop-text>div {
+                align-items: center;
+                display: flex;
+            }
+
+            .requir {
+                display: inline-block;
+                margin: .2rem;
+                width: 80%;
+
+            }
+
+            .requir>p {
+                margin: 0;
+            }
+
             .off {
                 visibility: hidden;
                 transform: translateX(-20px);
@@ -73,100 +104,455 @@
                 margin-bottom: 10px;
             }
 
-            * {
-                font-family: sans-serif;
-            }
-
             ul {
                 margin: 0;
                 padding-left: 15px;
             }
 
             @media screen and (min-width: 576px) {
-                form {
+                .form-valid {
                     margin: auto;
                 }
 
                 .pop-container {
                     width: 15rem;
                 }
+                .container-no-valid {
+                    width: 70%;
+                }
+
+                .form-container-nv {
+                    display: inline-block;
+                    width: 45%;
+                }
+
+                .rules-container-nv {
+                    display: inline-block;
+                    width: 45%;
+                }
+            }
+
+            @media screen and (max-width: 576px) {
+                .container-no-valid {
+                    width: 95%;
+                    display: grid;
+                    align-items: center;
+                }
+
+                .rules-container-nv {
+                    margin:auto;
+                    display: block;
+                }
+
+                .form-container-nv {
+                    display: block;
+                    width: 100%;
+                }
+
+                .rules-container-nv {
+                    width: 100%;
+                }
+
+                .form-nv {
+                    border-bottom: none;
+                    margin: auto;
+                }
+            }
+            h5 {
+                margin: .625rem;
+            }
+
+            p {
+                margin: .4rem;
             }
         </style>
-        <link href="/favicon.ico" rel="icon" type="image/ico" />
+        <link href="../../style.css" rel="stylesheet" type="text/css">
+        <link href="../../favicon.ico" rel="icon" type="image/ico" />
     </head>
     <body>
-        <form id="form" style="width: min-content">
-            <label for="usernameIn">Username</label>
-            <div id="usernameContainer" style="position: relative">
-                <input required id="usernameIn" type="text">
-                <div id="userPopover" class="popover off">
-                    <div class="arrow"></div>
-                    <div class="pop-container">
-                        <div class="pop-title">Username requirements</div>
-                        <div class="pop-text">
-                            <ul>
-                                <li>Longer than 4 characters</li>
-                                <li>Consists of alphanumeric characters, underscore and dash</li>
-                            </ul>
+        <main>
+            <div id="valid" style="display: none">
+                <h1 style="text-align: center">Please register to continue with BREP</h1>
+                <div class="form-valid form" style="margin: 10px">
+                    <button type="submit" disabled style="display: none" aria-hidden="true"></button>
+                    <label for="usernameIn">Username</label>
+                    <div id="usernameContainer" style="position: relative">
+                        <input required id="usernameIn" type="text">
+                        <div id="userPopover" class="popover off">
+                            <div class="arrow"></div>
+                            <div class="pop-container">
+                                <div class="pop-title">Username requirements</div>
+                                <div class="pop-text">
+                                    <div>
+                                        <img src="./img/cancel-col.svg" id="username-length">
+                                        <div class="requir"><p>Longer than 4 characters</p></div>
+                                    </div>
+                                    <div>
+                                        <img src="./img/cancel-col.svg" id="username-char">
+                                        <div class="requir"><p>Only alphanumeric characters, underscore and dash allowed</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                    </div>
+                    <label for="emailIn">Email</label>
+                    <div id="emailContainer" style="position: relative">
+                        <input required id="emailIn" placeholder="name@example.com" type="email">
+                        <div id="emailPopover" class="popover off">
+                            <div class="arrow"></div>
+                            <div class="pop-container">
+                                <div class="pop-title">Email requirements</div>
+                                <div class="pop-text">
+                                    <div>
+                                        <img src="./img/cancel-col.svg" id="email-valid">
+                                        <div class="requir"><p>Email is valid</p></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <label for="passIn">Password</label>
+                    <div id="passContainer" style="position: relative">
+                        <input required id="passIn" type="password">
+                        <div id="passPopover" class="popover off">
+                            <div class="arrow"></div>
+                            <div class="pop-container">
+                                <div class="pop-title">Password requirements</div>
+                                <div class="pop-text">
+                                    <div>
+                                        <img src="./img/cancel-col.svg" id="pass-length">
+                                        <div class="requir"><p>Longer than 8 characters</p></div>
+                                    </div>
+                                    <div>
+                                        <img src="./img/cancel-col.svg" id="pass-indent">
+                                        <div class="requir"><p>No identical characters in a row</p></div>
+                                    </div>
+                                    <div>
+                                        <img src="./img/cancel-col.svg" id="pass-sequence">
+                                        <div class="requir"><p>No more than 2 sequential characters in a row</p></div>
+                                    </div>
+                                    <div>
+                                        <img src="./img/cancel-col.svg" id="pass-low">
+                                        <div class="requir"><p>Has at least one lowercase letter</p></div>
+                                    </div>
+                                    <div>
+                                        <img src="./img/cancel-col.svg" id="pass-up">
+                                        <div class="requir"><p>Has at least one uppercase letter</p></div>
+                                    </div>
+                                    <div>
+                                        <img src="./img/cancel-col.svg" id="pass-num">
+                                        <div class="requir"><p>Has at least one number</p></div>
+                                    </div>
+                                    <div>
+                                        <img src="./img/cancel-col.svg" id="pass-special">
+                                        <div class="requir"><p>Has at least one special character ($%_, etc.)</p></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <label for="passCheck">Password confirmation</label>
+                    <div id="passCheckContainer" style="position: relative">
+                        <input required id="passCheck" type="password">
+                        <div id="passCheckPopover" class="popover off">
+                            <div class="arrow"></div>
+                            <div class="pop-container">
+                                <div class="pop-title">Password confirmation requirements</div>
+                                <div class="pop-text">
+                                    <div>
+                                        <img src="./img/cancel-col.svg" id="pass-check">
+                                        <div class="requir"><p>Password and check are identical</p></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick="contExperiment()" class="button" style="margin: 7px auto; display: block">Submit</button>
+                </div>
+            </div>
+            <div id="no-valid" style="display: none">
+                <h1 style="text-align: center">Please register to continue with ShopCog</h1>
+                <div class="container-no-valid" style="margin: auto;">
+                    <div class="form-container-nv" style="margin:auto">
+                        <div class="form form-nv">
+                            <button type="submit" disabled style="display: none" aria-hidden="true"></button>
+                            <label for="usernameIn-cog">Username</label>
+                            <input id="usernameIn-cog" type="text">
+                            <label for="emailIn-cog">Email</label>
+                            <input id="emailIn-cog" type="text">
+                            <label for="passIn-cog">Password</label>
+                            <input id="passIn-cog" type="password">
+                            <label for="passCheck-cog">Password confirmation</label>
+                            <input id="passCheck-cog" type="password">
+                            <button class="button" style="margin: 7px auto; display: block">Submit</button>
+                        </div>
+                    </div>
+                    <div class="rules-container-nv" style="border: .2rem solid #e8e9ea">
+                        <h5>Username requirements: </h5>
+                        <p>Longer than 4 characters</p>
+                        <p>Only alphanumeric characters, underscore and dash allowed</p>
+                        <h5>Password requirements: </h5>
+                        <p>Longer than 8 characters</p>
+                        <p>No identical characters in a row</p>
+                        <p>No more than 2 sequential characters in a row</p>
+                        <p>Has at least one upprecase, lowercase letter, one number and a special symbol ($%_, etc.)</p>
                     </div>
                 </div>
             </div>
-            <label for="emailIn">Email</label>
-            <input required id="emailIn" placeholder="name@example.com" type="email">
-            <label for="passIn">Password</label>
-            <div id="passContainer" style="position: relative">
-                <input required id="passIn" type="password">
-                <div id="passPopover" class="popover off">
-                    <div class="arrow"></div>
-                    <div class="pop-container">
-                        <div class="pop-title">Password requirements</div>
-                        <div class="pop-text">
-                            <ul>
-                                <li>Longer than 6 characters</li>
-                                <li>Has at least one lowercase letter, one uppercase letter and a number</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+        </main>
+        <footer style="position: fixed; bottom: 0; width: 100%">
+            <div class="alert alert-red off" id="invalid-input-alert">
+                Please check your input!
             </div>
-            <label for="passCheck">Password confirmation</label>
-            <input required id="passCheck" type="password">
-            <input onclick="postData()" class="button" style="margin: 7px auto; display: block" type="button" value="Submit">
-        </form>
+        </footer>
         <script src="../../script.js" type="application/javascript"></script>
         <script>
-            let passIn = document.getElementById("passIn");
-            let usernameIn = document.getElementById("usernameIn");
-            let timeElapsed = 0;
-            function postData() {
-                console.log("yeet");
-                fetch("/exp/questionnaire.php", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/x-www-form-urlencoded"
-                    },
-                    body: ("time=" + timeElapsed)
-                }).then(r => r.text().then(html => document.write(html)));
+
+            let passwordValid = false;
+            let usernameValid = false;
+            let emailValid = false;
+            let passCheckValid = false;
+            let timeElapsedValid = 0;
+            let timeElapsedNoValid = 0;
+            let order = Math.random();
+            let secondExp = false;
+            let timer;
+            function contExperiment() {
+                for (let element of document.getElementsByClassName("button")) {
+                    if (!(window.getComputedStyle(element).display === "none")) {
+                        element.disabled = true;
+                    }
+                }
+                if (passwordValid && usernameValid && emailValid && passCheckValid) {
+                    if (secondExp === true) {
+                        clearInterval(timer);
+                        fetch("../questionnaire.html").then(r => r.text().then(html => document.write(html)));
+                    } else {
+                        clearInterval(timer);
+                        secondExp = true;
+                        if (order < 0.5) {
+                            timer = setInterval(function () {
+                                timeElapsedNoValid++
+                            }, 1);
+                            passwordValid = false;
+                            usernameValid = false;
+                            emailValid = false;
+                            passCheckValid = false;
+                            document.getElementById("valid").style.display = "none";
+                            document.getElementById("no-valid").style.display = "block";
+                        } else {
+                            timer = setInterval(function () {
+                                timeElapsedValid++
+                            }, 1);
+                            passwordValid = false;
+                            usernameValid = false;
+                            emailValid = false;
+                            passCheckValid = false;
+                            document.getElementById("no-valid").style.display = "none";
+                            document.getElementById("valid").style.display = "block";
+                        }
+                    }
+                } else {
+                    for (let element of document.getElementsByClassName("button")) {
+                        if (!(window.getComputedStyle(element).display === "none")) {
+                            element.disabled = false;
+                        }
+                    }
+                    toggleAlert(document.getElementById("invalid-input-alert"));
+                }
             }
 
-            passIn.addEventListener("focusin", function () {
-                document.getElementById("passPopover").classList.remove("off");
-            });
+            function usernameValidation(username) {
+                let mistakes = "";
+                if (/[^0-9A-z]/.test(username)) {
+                    mistakes += "c"; //characters
+                }
+                if (username.length < 4) {
+                    mistakes += "l"; //length
+                }
+                usernameValid = mistakes === "";
+                return mistakes;
+            } //returns mistakes
 
-            passIn.addEventListener("focusout", function () {
-                document.getElementById("passPopover").classList.add("off");
-            });
+            function updateUsernamePopover() {
+                let mistakes = usernameValidation(document.getElementById("usernameIn").value);
+                let length = document.getElementById("username-length");
+                let charSet = document.getElementById("username-char");
+                length.src = "./img/tick-col.svg";
+                charSet.src = "./img/tick-col.svg";
+                if (!usernameValid) {
+                    if (mistakes.includes("c")) charSet.src = "./img/cancel-col.svg";
+                    if (mistakes.includes("l")) length.src = "./img/cancel-col.svg";
+                }
+            }
 
-            usernameIn.addEventListener("focusin", function () {
-                document.getElementById("userPopover").classList.remove("off");
-            });
+            function passwordValidation(password) {
+                let mistakes = "";
+                if (password.length < 8) mistakes += "le"; //length
+                let prevChar = "";
+                let sequence = false;
+                let hasUpCase = false;
+                let hasNumber = false;
+                let hasLowCase = false;
+                let hasSpecial = false;
+                for (let char of password) {
+                    if (/[0-9]/.test(char)) hasNumber = true;
+                    if (/[A-Z]/.test(char)) hasUpCase = true;
+                    if (/[a-z]/.test(char)) hasLowCase = true;
+                    if (/[!-/:-@\[-`{-~]/.test(char)) hasSpecial = true;
+                    if (/[0-9A-z]/.test(char)) {
+                        if ((char.charCodeAt(0) - prevChar.charCodeAt(0) === 1) && (prevChar !== "")) {
+                            if (sequence !== true) {
+                                sequence = true;
+                            } else {
+                                if (!mistakes.includes("se")) {
+                                    mistakes += "se"; //sequence
+                                }
+                            }
+                        } else {
+                            sequence = false;
+                        }
+                    }
+                    if (char === prevChar) {
+                        if (!mistakes.includes("i")) {
+                            mistakes += "i"; //identical
+                        }
+                    }
+                    prevChar = char;
+                }
+                if (!hasSpecial) mistakes += "sp"; //special
+                if (!hasLowCase) mistakes += "lo"; //lowercase
+                if (!hasUpCase) mistakes += "u"; //uppercase
+                if (!hasNumber) mistakes += "n"; //number
+                passwordValid = mistakes === "";
+                return mistakes;
+            } //returns mistakes
 
-            usernameIn.addEventListener("focusout", function () {
-                document.getElementById("userPopover").classList.add("off");
-            });
+            function updatePasswordPopover() {
+                let mistakes = passwordValidation(document.getElementById("passIn").value);
+                document.getElementById("pass-length").src = "./img/tick-col.svg";
+                document.getElementById("pass-sequence").src = "./img/tick-col.svg";
+                document.getElementById("pass-indent").src = "./img/tick-col.svg";
+                document.getElementById("pass-special").src = "./img/tick-col.svg";
+                document.getElementById("pass-low").src = "./img/tick-col.svg";
+                document.getElementById("pass-up").src = "./img/tick-col.svg";
+                document.getElementById("pass-num").src = "./img/tick-col.svg";
 
-            setInterval(function () {timeElapsed++;}, 1);
+                if (!passwordValid) {
+                    if (mistakes.includes("le")) document.getElementById("pass-length").src = "./img/cancel-col.svg";
+                    if (mistakes.includes("se")) document.getElementById("pass-sequence").src = "./img/cancel-col.svg";
+                    if (mistakes.includes("i")) document.getElementById("pass-indent").src = "./img/cancel-col.svg";
+                    if (mistakes.includes("sp")) document.getElementById("pass-special").src = "./img/cancel-col.svg";
+                    if (mistakes.includes("lo")) document.getElementById("pass-low").src = "./img/cancel-col.svg";
+                    if (mistakes.includes("u")) document.getElementById("pass-up").src = "./img/cancel-col.svg";
+                    if (mistakes.includes("n")) document.getElementById("pass-num").src = "./img/cancel-col.svg";
+                }
+            }
+
+            function updatePasswordCheckPopover() {
+                if (document.getElementById("passIn").value === document.getElementById("passCheck").value) {
+                    document.getElementById("pass-check").src = "./img/tick-col.svg";
+                    passCheckValid = true;
+                } else {
+                    document.getElementById("pass-check").src = "./img/cancel-col.svg";
+                    passCheckValid = false;
+                }
+            }
+
+            function validateEmail(email) {
+                let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(String(email).toLowerCase());
+            } //returns boolean
+
+            function updateEmailPopover() {
+                if (validateEmail(document.getElementById("emailIn").value)) {
+                    document.getElementById("email-valid").src = "./img/tick-col.svg";
+                    emailValid = true;
+                } else {
+                    document.getElementById("email-valid").src = "./img/cancel-col.svg";
+                    emailValid = false;
+                }
+            }
+
+            function noValidationCheck() {
+                passwordValid = passwordValidation(document.getElementById("passIn-cog").value) === "";
+                usernameValid = usernameValidation(document.getElementById("usernameIn-cog").value) === "";
+                emailValid = validateEmail(document.getElementById("emailIn-cog").value);
+                passCheckValid = document.getElementById("passIn-cog").value === document.getElementById("passCheck-cog").value;
+                contExperiment();
+            }
+
+            function startup() {
+                let passIn = document.getElementById("passIn");
+                let usernameIn = document.getElementById("usernameIn");
+                let emailIn = document.getElementById("emailIn");
+                let passCheckIn = document.getElementById("passCheck");
+
+                usernameValidation(document.getElementById("usernameIn").value);
+                updateEmailPopover();
+
+                passIn.addEventListener("focusin", function () {
+                    updatePasswordPopover();
+                    document.getElementById("passPopover").classList.remove("off");
+                });
+
+                passIn.addEventListener("focusout", function () {
+                    document.getElementById("passPopover").classList.add("off");
+                });
+
+                passCheckIn.addEventListener("focusin", function () {
+                    updatePasswordCheckPopover();
+                    document.getElementById("passCheckPopover").classList.remove("off");
+                });
+
+                passCheckIn.addEventListener("focusout", function () {
+                    document.getElementById("passCheckPopover").classList.add("off");
+                });
+
+                usernameIn.addEventListener("focusin", function () {
+                    updateUsernamePopover();
+                    document.getElementById("userPopover").classList.remove("off");
+                });
+
+                usernameIn.addEventListener("focusout", function () {
+                    document.getElementById("userPopover").classList.add("off");
+                });
+
+                emailIn.addEventListener("focusin", function () {
+                    updateEmailPopover();
+                    document.getElementById("emailPopover").classList.remove("off");
+                });
+
+                emailIn.addEventListener("focusout", function () {
+                    document.getElementById("emailPopover").classList.add("off");
+                });
+
+                window.addEventListener("keyup", function (event) {
+                    if (event.key === "Enter") {
+                        for (let element of document.getElementsByClassName("button")) {
+                            if (!(window.getComputedStyle(element).display === "none")) {
+                                element.click();
+                            }
+                        }
+                    }
+                });
+
+                usernameIn.addEventListener("keyup", updateUsernamePopover);
+                passIn.addEventListener("keyup", updatePasswordPopover);
+                passCheckIn.addEventListener("keyup", updatePasswordCheckPopover);
+                emailIn.addEventListener("keyup", updateEmailPopover);
+
+                if (order < 0.5) {
+                    document.getElementById("valid").style.display = "block";
+                    timer = setInterval(function () {timeElapsedValid++}, 1);
+                } else {
+                    document.getElementById("no-valid").style.display = "block";
+                    timer = setInterval(function () {timeElapsedNoValid++}, 1);
+                }
+            }
+
+            startup();
         </script>
     </body>
 </html>

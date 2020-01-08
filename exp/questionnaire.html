@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Experiment</title>
+        <link href="../../favicon.ico" rel="icon" type="image/ico" />
+        <link href="../../style.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <main>
+            <form>
+                <fieldset>
+                    <legend>1. Have you had any problems inputting the data?</legend>
+                    <input id="in-prob-valid" type="radio">
+                    <label for="in-prob-valid">Yes, in form for BREP</label><br />
+                    <input id="in-prob-no-valid" type="radio">
+                    <label for="in-prob-no-valid">Yes, in form for ShopCog</label><br />
+                    <input id="in-prob-no" type="radio">
+                    <label for="in-prob-no">No</label><br />
+                </fieldset>
+            </form>
+            <form>
+                <fieldset>
+                    <legend>The popups in the form for BREP helped me</legend>
+                    <input id="help-5" type="radio">
+                    <label for="help-5">Strongly Agree</label><br />
+                    <input id="help-4" type="radio">
+                    <label for="help-4">Agree</label><br />
+                    <input id="help-3" type="radio">
+                    <label for="help-3">Neutral</label><br />
+                    <input id="help-2" type="radio">
+                    <label for="help-2">Disagree</label><br />
+                    <input id="help-1" type="radio">
+                    <label for="help-1">Strongly disagree</label><br />
+                </fieldset>
+            </form>
+        </main>
+        <footer style="position: fixed; bottom: 0; width: 100%">
+            <div class="alert alert-green" id="thank">
+                Thank you for your input. Please take a few minutes to complete this questionnaire.
+            </div>
+        </footer>
+        <script rel="script" type="text/javascript" src="../../script.js"></script>
+    </body>
+</html>
