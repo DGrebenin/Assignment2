@@ -178,7 +178,6 @@
             <div id="valid" style="display: none">
                 <h1 style="text-align: center">Please register to continue with BREP</h1>
                 <div class="form-valid form">
-                    <button type="submit" disabled style="display: none" aria-hidden="true"></button>
                     <label for="usernameIn">Username</label>
                     <div id="usernameContainer" style="position: relative">
                         <input required id="usernameIn" type="text">
@@ -272,7 +271,7 @@
                             </div>
                         </div>
                     </div>
-                    <button onclick="contExperiment()" class="button" style="margin: 7px auto; display: block">Submit</button>
+                    <button id="v-submit" onclick="contExperiment()" class="button" style="margin: 7px auto; display: block" disabled>Submit</button>
                 </div>
             </div>
             <div id="no-valid" style="display: none">
@@ -280,7 +279,6 @@
                 <div class="container-no-valid" style="margin: auto;">
                     <div class="form-container-nv" style="margin:auto">
                         <div class="form form-nv">
-                            <button type="submit" disabled style="display: none" aria-hidden="true"></button>
                             <label for="usernameIn-cog">Username</label>
                             <input id="usernameIn-cog" type="text">
                             <label for="emailIn-cog">Email</label>
@@ -289,7 +287,7 @@
                             <input id="passIn-cog" type="password">
                             <label for="passCheck-cog">Password confirmation</label>
                             <input id="passCheck-cog" type="password">
-                            <button class="button" onclick="noValidationCheck()" style="margin: 7px auto; display: block">Submit</button>
+                            <button class="button" id="nv-submit" onclick="noValidationCheck()" style="margin: 7px auto; display: block" disabled>Submit</button>
                         </div>
                     </div>
                     <div class="rules-container-nv" style="border: .2rem solid #e8e9ea">
@@ -322,42 +320,43 @@
             let order = Math.random();
             let secondExp = false;
             let timer;
+            let checkInterval;
             function contExperiment() {
                 if (passwordValid && usernameValid && emailValid && passCheckValid) {
                     if (secondExp === true) {
                         clearInterval(timer);
+                        clearInterval(checkInterval);
                         fetch("../questionnaire.html").then(r => r.text().then(html => document.write(html)));
                     } else {
                         clearInterval(timer);
                         secondExp = true;
                         if (order < 0.5) {
+                            clearInterval(checkInterval);
                             timer = setInterval(function () {
                                 timeElapsedNoValid++
                             }, 1);
-                            passwordValid = false;
-                            usernameValid = false;
-                            emailValid = false;
-                            passCheckValid = false;
                             document.getElementById("valid").style.display = "none";
+                            document.getElementById("v-submit").disabled = true;
                             document.getElementById("no-valid").style.display = "block";
+                            document.getElementById("nv-submit").disabled = false;
                         } else {
+                            checkInterval = setInterval(function () {
+                                updateEmailPopover();
+                                updatePasswordPopover();
+                                updatePasswordCheckPopover();
+                                updateUsernamePopover();
+                            }, 100);
                             timer = setInterval(function () {
                                 timeElapsedValid++
                             }, 1);
-                            passwordValid = false;
-                            usernameValid = false;
-                            emailValid = false;
-                            passCheckValid = false;
                             document.getElementById("no-valid").style.display = "none";
+                            document.getElementById("nv-submit").disabled = true;
                             document.getElementById("valid").style.display = "block";
+                            document.getElementById("v-submit").disabled = false;
                         }
                     }
                 } else {
-                    for (let element of document.getElementsByClassName("button")) {
-                        if (!(window.getComputedStyle(element).display === "none")) {
-                            element.disabled = false;
-                        }
-                    }
+                    console.log(document.getElementById("passIn").value === document.getElementById("passCheck").value);
                     toggleAlert(document.getElementById("invalid-input-alert"));
                 }
             }
@@ -530,7 +529,7 @@
                 window.addEventListener("keyup", function (event) {
                     if (event.key === "Enter") {
                         for (let element of document.getElementsByClassName("button")) {
-                            if (!(window.getComputedStyle(element).display === "none")) {
+                            if (window.getComputedStyle(element).display === "block") {
                                 element.click();
                             }
                         }
@@ -544,9 +543,17 @@
 
                 if (order < 0.5) {
                     document.getElementById("valid").style.display = "block";
+                    document.getElementById("v-submit").disabled = false;
+                    checkInterval = setInterval(function () {
+                        updateEmailPopover();
+                        updatePasswordPopover();
+                        updatePasswordCheckPopover();
+                        updateUsernamePopover();
+                    }, 100);
                     timer = setInterval(function () {timeElapsedValid++}, 1);
                 } else {
                     document.getElementById("no-valid").style.display = "block";
+                    document.getElementById("nv-submit").disabled = false;
                     timer = setInterval(function () {timeElapsedNoValid++}, 1);
                 }
             }
