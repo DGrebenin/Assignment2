@@ -60,7 +60,7 @@
         $last_line = $database->fgets();
         $database->next();
     }
-    $part_id = explode(",", $last_line)[0];
+    $part_id = intval(explode(",", $last_line)[0]) + 1;
 
     $database->fwrite("\n$part_id,$time1,$time2,$problems,$support,$preference");
     $database = null;
@@ -81,17 +81,6 @@
                 <p>If you wish for your results to be discarded please contact me at:
                     <a href="mailto:dgrebenin@uclan.ac.uk">dgrebenin@uclan.ac.uk</a> with your participant ID.
                 </p>
-            </div>
-            <div style="height: 10%">
-                <div style="height: 50%">
-                    <div style="margin: 0 auto 0 auto; width: max-content">
-                        <label style="font-weight: bold" for="consent">I agree to the aforementioned rules</label>
-                        <input id="consent" type="checkbox">
-                    </div>
-                </div>
-                <div style="height: 50%">
-                    <button onclick="startExperiment()" style="margin: 0 auto 0 auto; display: block">Start the experiment</button>
-                </div>
             </div>
         </div>
     </main>
