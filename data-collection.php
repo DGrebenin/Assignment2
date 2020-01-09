@@ -54,7 +54,7 @@
     $support = $data->help;
     $preference = $data->prefer;
 
-    $database = new SplFileObject(".\\data.txt", "w");
+    $database = new SplFileObject(".\\data.txt", "w+");
     $last_line = "";
     while (!$database->eof()) {
         $last_line = $database->fgets();
