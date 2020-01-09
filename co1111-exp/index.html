@@ -231,10 +231,7 @@
                                         <img src="/co1111-exp/img/cancel-col.svg" id="pass-indent">
                                         <div class="requir"><p>No identical characters in a row</p></div>
                                     </div>
-                                    <div>
-                                        <img src="/co1111-exp/img/cancel-col.svg" id="pass-sequence">
-                                        <div class="requir"><p>No more than 2 sequential characters in a row</p></div>
-                                    </div>
+                                   
                                     <div>
                                         <img src="/co1111-exp/img/cancel-col.svg" id="pass-low">
                                         <div class="requir"><p>Has at least one lowercase letter</p></div>
@@ -398,19 +395,7 @@
                     if (/[A-Z]/.test(char)) hasUpCase = true;
                     if (/[a-z]/.test(char)) hasLowCase = true;
                     if (/[!-/:-@\[-`{-~]/.test(char)) hasSpecial = true;
-                    if (/[0-9A-z]/.test(char)) {
-                        if ((char.charCodeAt(0) - prevChar.charCodeAt(0) === 1) && (prevChar !== "")) {
-                            if (sequence !== true) {
-                                sequence = true;
-                            } else {
-                                if (!mistakes.includes("se")) {
-                                    mistakes += "se"; //sequence
-                                }
-                            }
-                        } else {
-                            sequence = false;
-                        }
-                    }
+              
                     if (char === prevChar) {
                         if (!mistakes.includes("i")) {
                             mistakes += "i"; //identical
@@ -438,7 +423,7 @@
 
                 if (!passwordValid) {
                     if (mistakes.includes("le")) document.getElementById("pass-length").src = "/co1111-exp/img/cancel-col.svg";
-                    if (mistakes.includes("se")) document.getElementById("pass-sequence").src = "/co1111-exp/img/cancel-col.svg";
+                   
                     if (mistakes.includes("i")) document.getElementById("pass-indent").src = "/co1111-exp/img/cancel-col.svg";
                     if (mistakes.includes("sp")) document.getElementById("pass-special").src = "/co1111-exp/img/cancel-col.svg";
                     if (mistakes.includes("lo")) document.getElementById("pass-low").src = "/co1111-exp/img/cancel-col.svg";
