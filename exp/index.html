@@ -170,8 +170,8 @@
                 margin: .4rem;
             }
         </style>
-        <link href="../../style.css" rel="stylesheet" type="text/css">
-        <link href="../../favicon.ico" rel="icon" type="image/ico" />
+        <link href="/style.css" rel="stylesheet" type="text/css">
+        <link href="/favicon.ico" rel="icon" type="image/ico" />
     </head>
     <body>
         <main>
@@ -187,11 +187,11 @@
                                 <div class="pop-title">Username requirements</div>
                                 <div class="pop-text">
                                     <div>
-                                        <img src="./img/cancel-col.svg" id="username-length">
+                                        <img src="/exp/img/cancel-col.svg" id="username-length">
                                         <div class="requir"><p>Longer than 4 characters</p></div>
                                     </div>
                                     <div>
-                                        <img src="./img/cancel-col.svg" id="username-char">
+                                        <img src="/exp/img/cancel-col.svg" id="username-char">
                                         <div class="requir"><p>Only alphanumeric characters, underscore and dash allowed</p>
                                         </div>
                                     </div>
@@ -208,7 +208,7 @@
                                 <div class="pop-title">Email requirements</div>
                                 <div class="pop-text">
                                     <div>
-                                        <img src="./img/cancel-col.svg" id="email-valid">
+                                        <img src="/exp/img/cancel-col.svg" id="email-valid">
                                         <div class="requir"><p>Email is valid</p></div>
                                     </div>
                                 </div>
@@ -224,31 +224,31 @@
                                 <div class="pop-title">Password requirements</div>
                                 <div class="pop-text">
                                     <div>
-                                        <img src="./img/cancel-col.svg" id="pass-length">
+                                        <img src="/exp/img/cancel-col.svg" id="pass-length">
                                         <div class="requir"><p>Longer than 8 characters</p></div>
                                     </div>
                                     <div>
-                                        <img src="./img/cancel-col.svg" id="pass-indent">
+                                        <img src="/exp/img/cancel-col.svg" id="pass-indent">
                                         <div class="requir"><p>No identical characters in a row</p></div>
                                     </div>
                                     <div>
-                                        <img src="./img/cancel-col.svg" id="pass-sequence">
+                                        <img src="/exp/img/cancel-col.svg" id="pass-sequence">
                                         <div class="requir"><p>No more than 2 sequential characters in a row</p></div>
                                     </div>
                                     <div>
-                                        <img src="./img/cancel-col.svg" id="pass-low">
+                                        <img src="/exp/img/cancel-col.svg" id="pass-low">
                                         <div class="requir"><p>Has at least one lowercase letter</p></div>
                                     </div>
                                     <div>
-                                        <img src="./img/cancel-col.svg" id="pass-up">
+                                        <img src="/exp/img/cancel-col.svg" id="pass-up">
                                         <div class="requir"><p>Has at least one uppercase letter</p></div>
                                     </div>
                                     <div>
-                                        <img src="./img/cancel-col.svg" id="pass-num">
+                                        <img src="/exp/img/cancel-col.svg" id="pass-num">
                                         <div class="requir"><p>Has at least one number</p></div>
                                     </div>
                                     <div>
-                                        <img src="./img/cancel-col.svg" id="pass-special">
+                                        <img src="/exp/img/cancel-col.svg" id="pass-special">
                                         <div class="requir"><p>Has at least one special character ($%_, etc.)</p></div>
                                     </div>
                                 </div>
@@ -264,7 +264,7 @@
                                 <div class="pop-title">Password confirmation requirements</div>
                                 <div class="pop-text">
                                     <div>
-                                        <img src="./img/cancel-col.svg" id="pass-check">
+                                        <img src="/exp/img/cancel-col.svg" id="pass-check">
                                         <div class="requir"><p>Password and check are identical</p></div>
                                     </div>
                                 </div>
@@ -308,7 +308,7 @@
                 Please check your input!
             </div>
         </footer>
-        <script src="../../script.js" type="application/javascript"></script>
+        <script src="/script.js" type="application/javascript"></script>
         <script>
 
             let passwordValid = false;
@@ -326,7 +326,7 @@
                     if (secondExp === true) {
                         clearInterval(timer);
                         clearInterval(checkInterval);
-                        fetch("../questionnaire.html").then(r => r.text().then(html => document.write(html)));
+                        fetch("/exp/questionnaire.html").then(r => r.text().then(html => document.write(html)));
                     } else {
                         clearInterval(timer);
                         secondExp = true;
@@ -356,7 +356,6 @@
                         }
                     }
                 } else {
-                    console.log(document.getElementById("passIn").value === document.getElementById("passCheck").value);
                     toggleAlert(document.getElementById("invalid-input-alert"));
                 }
             }
@@ -377,11 +376,11 @@
                 let mistakes = usernameValidation(document.getElementById("usernameIn").value);
                 let length = document.getElementById("username-length");
                 let charSet = document.getElementById("username-char");
-                length.src = "./img/tick-col.svg";
-                charSet.src = "./img/tick-col.svg";
+                length.src = "/exp/img/tick-col.svg";
+                charSet.src = "/exp/img/tick-col.svg";
                 if (!usernameValid) {
-                    if (mistakes.includes("c")) charSet.src = "./img/cancel-col.svg";
-                    if (mistakes.includes("l")) length.src = "./img/cancel-col.svg";
+                    if (mistakes.includes("c")) charSet.src = "/exp/img/cancel-col.svg";
+                    if (mistakes.includes("l")) length.src = "/exp/img/cancel-col.svg";
                 }
             }
 
@@ -429,31 +428,31 @@
 
             function updatePasswordPopover() {
                 let mistakes = passwordValidation(document.getElementById("passIn").value);
-                document.getElementById("pass-length").src = "./img/tick-col.svg";
-                document.getElementById("pass-sequence").src = "./img/tick-col.svg";
-                document.getElementById("pass-indent").src = "./img/tick-col.svg";
-                document.getElementById("pass-special").src = "./img/tick-col.svg";
-                document.getElementById("pass-low").src = "./img/tick-col.svg";
-                document.getElementById("pass-up").src = "./img/tick-col.svg";
-                document.getElementById("pass-num").src = "./img/tick-col.svg";
+                document.getElementById("pass-length").src = "/exp/img/tick-col.svg";
+                document.getElementById("pass-sequence").src = "/exp/img/tick-col.svg";
+                document.getElementById("pass-indent").src = "/exp/img/tick-col.svg";
+                document.getElementById("pass-special").src = "/exp/img/tick-col.svg";
+                document.getElementById("pass-low").src = "/exp/img/tick-col.svg";
+                document.getElementById("pass-up").src = "/exp/img/tick-col.svg";
+                document.getElementById("pass-num").src = "/exp/img/tick-col.svg";
 
                 if (!passwordValid) {
-                    if (mistakes.includes("le")) document.getElementById("pass-length").src = "./img/cancel-col.svg";
-                    if (mistakes.includes("se")) document.getElementById("pass-sequence").src = "./img/cancel-col.svg";
-                    if (mistakes.includes("i")) document.getElementById("pass-indent").src = "./img/cancel-col.svg";
-                    if (mistakes.includes("sp")) document.getElementById("pass-special").src = "./img/cancel-col.svg";
-                    if (mistakes.includes("lo")) document.getElementById("pass-low").src = "./img/cancel-col.svg";
-                    if (mistakes.includes("u")) document.getElementById("pass-up").src = "./img/cancel-col.svg";
-                    if (mistakes.includes("n")) document.getElementById("pass-num").src = "./img/cancel-col.svg";
+                    if (mistakes.includes("le")) document.getElementById("pass-length").src = "/exp/img/cancel-col.svg";
+                    if (mistakes.includes("se")) document.getElementById("pass-sequence").src = "/exp/img/cancel-col.svg";
+                    if (mistakes.includes("i")) document.getElementById("pass-indent").src = "/exp/img/cancel-col.svg";
+                    if (mistakes.includes("sp")) document.getElementById("pass-special").src = "/exp/img/cancel-col.svg";
+                    if (mistakes.includes("lo")) document.getElementById("pass-low").src = "/exp/img/cancel-col.svg";
+                    if (mistakes.includes("u")) document.getElementById("pass-up").src = "/exp/img/cancel-col.svg";
+                    if (mistakes.includes("n")) document.getElementById("pass-num").src = "/exp/img/cancel-col.svg";
                 }
             }
 
             function updatePasswordCheckPopover() {
                 if (document.getElementById("passIn").value === document.getElementById("passCheck").value) {
-                    document.getElementById("pass-check").src = "./img/tick-col.svg";
+                    document.getElementById("pass-check").src = "/exp/img/tick-col.svg";
                     passCheckValid = true;
                 } else {
-                    document.getElementById("pass-check").src = "./img/cancel-col.svg";
+                    document.getElementById("pass-check").src = "/exp/img/cancel-col.svg";
                     passCheckValid = false;
                 }
             }
@@ -465,10 +464,10 @@
 
             function updateEmailPopover() {
                 if (validateEmail(document.getElementById("emailIn").value)) {
-                    document.getElementById("email-valid").src = "./img/tick-col.svg";
+                    document.getElementById("email-valid").src = "/exp/img/tick-col.svg";
                     emailValid = true;
                 } else {
-                    document.getElementById("email-valid").src = "./img/cancel-col.svg";
+                    document.getElementById("email-valid").src = "/exp/img/cancel-col.svg";
                     emailValid = false;
                 }
             }
