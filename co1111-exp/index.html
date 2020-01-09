@@ -326,7 +326,7 @@
                     if (secondExp === true) {
                         clearInterval(timer);
                         clearInterval(checkInterval);
-                        fetch("/exp/questionnaire.html").then(r => r.text().then(html => document.write(html)));
+                        fetch("/co1111-exp/questionnaire.html").then(r => r.text().then(html => document.write(html)));
                     } else {
                         clearInterval(timer);
                         secondExp = true;
@@ -376,11 +376,11 @@
                 let mistakes = usernameValidation(document.getElementById("usernameIn").value);
                 let length = document.getElementById("username-length");
                 let charSet = document.getElementById("username-char");
-                length.src = "/exp/img/tick-col.svg";
-                charSet.src = "/exp/img/tick-col.svg";
+                length.src = "/co1111-exp/img/tick-col.svg";
+                charSet.src = "/co1111-exp/img/tick-col.svg";
                 if (!usernameValid) {
-                    if (mistakes.includes("c")) charSet.src = "/exp/img/cancel-col.svg";
-                    if (mistakes.includes("l")) length.src = "/exp/img/cancel-col.svg";
+                    if (mistakes.includes("c")) charSet.src = "/co1111-exp/img/cancel-col.svg";
+                    if (mistakes.includes("l")) length.src = "/co1111-exp/img/cancel-col.svg";
                 }
             }
 
@@ -428,31 +428,31 @@
 
             function updatePasswordPopover() {
                 let mistakes = passwordValidation(document.getElementById("passIn").value);
-                document.getElementById("pass-length").src = "/exp/img/tick-col.svg";
-                document.getElementById("pass-sequence").src = "/exp/img/tick-col.svg";
-                document.getElementById("pass-indent").src = "/exp/img/tick-col.svg";
-                document.getElementById("pass-special").src = "/exp/img/tick-col.svg";
-                document.getElementById("pass-low").src = "/exp/img/tick-col.svg";
-                document.getElementById("pass-up").src = "/exp/img/tick-col.svg";
-                document.getElementById("pass-num").src = "/exp/img/tick-col.svg";
+                document.getElementById("pass-length").src = "/co1111-exp/img/tick-col.svg";
+                document.getElementById("pass-sequence").src = "/co1111-exp/img/tick-col.svg";
+                document.getElementById("pass-indent").src = "/co1111-exp/img/tick-col.svg";
+                document.getElementById("pass-special").src = "/co1111-exp/img/tick-col.svg";
+                document.getElementById("pass-low").src = "/co1111-exp/img/tick-col.svg";
+                document.getElementById("pass-up").src = "/co1111-exp/img/tick-col.svg";
+                document.getElementById("pass-num").src = "/co1111-exp/img/tick-col.svg";
 
                 if (!passwordValid) {
-                    if (mistakes.includes("le")) document.getElementById("pass-length").src = "/exp/img/cancel-col.svg";
-                    if (mistakes.includes("se")) document.getElementById("pass-sequence").src = "/exp/img/cancel-col.svg";
-                    if (mistakes.includes("i")) document.getElementById("pass-indent").src = "/exp/img/cancel-col.svg";
-                    if (mistakes.includes("sp")) document.getElementById("pass-special").src = "/exp/img/cancel-col.svg";
-                    if (mistakes.includes("lo")) document.getElementById("pass-low").src = "/exp/img/cancel-col.svg";
-                    if (mistakes.includes("u")) document.getElementById("pass-up").src = "/exp/img/cancel-col.svg";
-                    if (mistakes.includes("n")) document.getElementById("pass-num").src = "/exp/img/cancel-col.svg";
+                    if (mistakes.includes("le")) document.getElementById("pass-length").src = "/co1111-exp/img/cancel-col.svg";
+                    if (mistakes.includes("se")) document.getElementById("pass-sequence").src = "/co1111-exp/img/cancel-col.svg";
+                    if (mistakes.includes("i")) document.getElementById("pass-indent").src = "/co1111-exp/img/cancel-col.svg";
+                    if (mistakes.includes("sp")) document.getElementById("pass-special").src = "/co1111-exp/img/cancel-col.svg";
+                    if (mistakes.includes("lo")) document.getElementById("pass-low").src = "/co1111-exp/img/cancel-col.svg";
+                    if (mistakes.includes("u")) document.getElementById("pass-up").src = "/co1111-exp/img/cancel-col.svg";
+                    if (mistakes.includes("n")) document.getElementById("pass-num").src = "/co1111-exp/img/cancel-col.svg";
                 }
             }
 
             function updatePasswordCheckPopover() {
                 if (document.getElementById("passIn").value === document.getElementById("passCheck").value) {
-                    document.getElementById("pass-check").src = "/exp/img/tick-col.svg";
+                    document.getElementById("pass-check").src = "/co1111-exp/img/tick-col.svg";
                     passCheckValid = true;
                 } else {
-                    document.getElementById("pass-check").src = "/exp/img/cancel-col.svg";
+                    document.getElementById("pass-check").src = "/co1111-exp/img/cancel-col.svg";
                     passCheckValid = false;
                 }
             }
@@ -464,10 +464,10 @@
 
             function updateEmailPopover() {
                 if (validateEmail(document.getElementById("emailIn").value)) {
-                    document.getElementById("email-valid").src = "/exp/img/tick-col.svg";
+                    document.getElementById("email-valid").src = "/co1111-exp/img/tick-col.svg";
                     emailValid = true;
                 } else {
-                    document.getElementById("email-valid").src = "/exp/img/cancel-col.svg";
+                    document.getElementById("email-valid").src = "/co1111-exp/img/cancel-col.svg";
                     emailValid = false;
                 }
             }
