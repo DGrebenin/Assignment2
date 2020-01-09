@@ -84,21 +84,21 @@
             document.getElementById("submit").addEventListener("click", function () {
                 let inProb;
                 for (let element of document.getElementById("in-prob").elements) {
-                    if (element.value === "on") {
+                    if (element.checked === true) {
                         inProb = element.id;
                     }
                 }
 
                 let help;
                 for (let element of document.getElementById("help").elements) {
-                    if (element.value === "on") {
+                    if (element.checked === true) {
                         help = element.id;
                     }
                 }
 
                 let prefer;
                 for (let element of document.getElementById("prefer").elements) {
-                    if (element.value === "on") {
+                    if (element.checked === true) {
                         prefer = element.id;
                     }
                 }
