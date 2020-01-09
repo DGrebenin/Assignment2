@@ -68,21 +68,21 @@
     ?>
     <body>
     <main>
-        <div id="warning">
-            <div style="height: 90%">
-                <h2 style="text-align: center; margin: 0 10px 20px 10px">Thank you for your participation!</h2>
-                <p>Your participant ID is: <?php echo $part_id?></p>
-                <p>The purpose of this experiment was to find out if inline validation speeds up form input and improves
-                 user experience in general.</p>
-                <p>This website has measured the time you took to fill in each form and your questionnaire answers
-                    (referred to as "results" from here on out). As has already been mentioned before the experiment,
-                    none of the data you typed in the forms has been  saved (while you are reading this it has already
-                    been discarded).</p>
-                <p>If you wish for your results to be discarded please contact me at:
-                    <a href="mailto:dgrebenin@uclan.ac.uk">dgrebenin@uclan.ac.uk</a> with your participant ID.
-                </p>
-            </div>
-        </div>
+<!--        <div id="warning">-->
+<!--            <div style="height: 90%">-->
+<!--                <h2 style="text-align: center; margin: 0 10px 20px 10px">Thank you for your participation!</h2>-->
+<!--                <p>Your participant ID is: --><?php //echo $part_id?><!--</p>-->
+<!--                <p>The purpose of this experiment was to find out if inline validation speeds up form input and improves-->
+<!--                 user experience in general.</p>-->
+<!--                <p>This website has measured the time you took to fill in each form and your questionnaire answers-->
+<!--                    (referred to as "results" from here on out). As has already been mentioned before the experiment,-->
+<!--                    none of the data you typed in the forms has been  saved (while you are reading this it has already-->
+<!--                    been discarded).</p>-->
+<!--                <p>If you wish for your results to be discarded please contact me at:-->
+<!--                    <a href="mailto:dgrebenin@uclan.ac.uk">dgrebenin@uclan.ac.uk</a> with your participant ID.-->
+<!--                </p>-->
+<!--            </div>-->
+<!--        </div>-->
     </main>
     </body>
 </html>
