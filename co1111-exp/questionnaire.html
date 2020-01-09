@@ -36,35 +36,42 @@
     <body>
         <main>
             <div>
-                <fieldset>
-                    <legend>1. Have you had any problems inputting the data?</legend>
-                    <input id="in-prob-valid" name="in-prob" type="radio">
-                    <label for="in-prob-valid">Yes, in "BREP" form</label><br />
-                    <input id="in-prob-no-valid" name="in-prob" type="radio">
-                    <label for="in-prob-no-valid">Yes, in "ShopCog" form</label><br />
-                    <input id="in-prob-no" name="in-prob" type="radio">
-                    <label for="in-prob-no">No</label><br />
-                </fieldset>
-                <fieldset>
-                    <legend>2. The "ShopCog" form was easier to fill in.</legend>
-                    <input id="help-5" name="help" type="radio">
-                    <label for="help-5">Strongly Agree</label><br />
-                    <input id="help-4" name="help" type="radio">
-                    <label for="help-4">Agree</label><br />
-                    <input id="help-3" name="help" type="radio">
-                    <label for="help-3">Neutral</label><br />
-                    <input id="help-2" name="help" type="radio">
-                    <label for="help-2">Disagree</label><br />
-                    <input id="help-1" name="help" type="radio">
-                    <label for="help-1">Strongly disagree</label><br />
-                </fieldset>
-                <fieldset>
-                    <legend>3. Which of the forms would you prefer to fill in again if you had to?</legend>
-                    <input id="prefer-cog" name="prefer" type="radio">
-                    <label for="prefer-cog">ShopCog</label><br />
-                    <input id="prefer-brep" name="prefer" type="radio">
-                    <label for="prefer-brep">BREP</label><br />
-                </fieldset>
+                <form id="in-prob">
+                    <fieldset>
+                        <legend>1. Have you had any problems inputting the data?</legend>
+                        <input id="brep-prob" name="in-prob" type="radio">
+                        <label for="brep-prob">Yes, in "BREP" form</label><br/>
+                        <input id="cog-prob" name="in-prob" type="radio">
+                        <label for="cog-prob">Yes, in "ShopCog" form</label><br/>
+                        <input id="no-prob" name="in-prob" type="radio">
+                        <label for="no-prob">No</label><br/>
+                    </fieldset>
+                </form>
+                <form id="help">
+                    <fieldset>
+                        <legend>2. The "ShopCog" form was easier to fill in.</legend>
+                        <input id="5" name="help" type="radio">
+                        <label for="5">Strongly Agree</label><br/>
+                        <input id="4" name="help" type="radio">
+                        <label for="4">Agree</label><br/>
+                        <input id="3" name="help" type="radio">
+                        <label for="3">Neutral</label><br/>
+                        <input id="2" name="help" type="radio">
+                        <label for="2">Disagree</label><br/>
+                        <input id="1" name="help" type="radio">
+                        <label for="1">Strongly disagree</label><br/>
+                    </fieldset>
+                </form>
+                <form id="prefer">
+                    <fieldset>
+                        <legend>3. Which of the forms would you prefer to fill in again if you had to?</legend>
+                        <input id="prefer-cog" name="prefer" type="radio">
+                        <label for="prefer-cog">ShopCog</label><br/>
+                        <input id="prefer-brep" name="prefer" type="radio">
+                        <label for="prefer-brep">BREP</label><br/>
+                    </fieldset>
+                </form>
+                <button class="button" id="submit" style="margin: auto">Submit</button>
             </div>
         </main>
         <footer style="position: fixed; bottom: 0; width: 100%">
@@ -73,5 +80,41 @@
             </div>
         </footer>
         <script rel="script" type="text/javascript" src="/script.js"></script>
+        <script>
+            document.getElementById("submit").addEventListener("click", function () {
+                let inProb;
+                for (let element of document.getElementById("in-prob").elements) {
+                    if (element.value === "on") {
+                        inProb = element.id;
+                    }
+                }
+
+                let help;
+                for (let element of document.getElementById("help").elements) {
+                    if (element.value === "on") {
+                        help = element.id;
+                    }
+                }
+
+                let prefer;
+                for (let element of document.getElementById("prefer").elements) {
+                    if (element.value === "on") {
+                        prefer = element.id;
+                    }
+                }
+
+                fetch("/data-collection.php", {
+                    method: "POST",
+                    headers: {"Content-Type" : "text/json"},
+                    body: JSON.stringify({
+                        timeValid: timeElapsedValid,
+                        timeNoValid: timeElapsedNoValid,
+                        prob: inProb,
+                        help: help,
+                        prefer: prefer
+                    })
+                }).then(r => r.text().then(html => document.write(html)));
+            });
+        </script>
     </body>
 </html>
